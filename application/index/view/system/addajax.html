@@ -1,0 +1,123 @@
+{extend name="public/base"}
+{block name="main"}
+<div id="page-wrapper" >
+    <div id="page-inner">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="page-header">
+                    产品管理<small>添加产品</small>
+                </h1>
+            </div>
+        </div>
+        <!-- /. ROW  -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading" style="text-align: center;">
+                        产品信息
+                    </div>
+                    <div class="panel-body">
+                              <div class="row">
+                <div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
+                    <div class="panel panel-default">
+                        
+                        <div class="panel-body">
+                            <form role="form" method="post" action="{:url('index/system/addAjax')}" enctype="multipart/form-data" >
+                                <div class="form-group">
+                                        <label>产品名称</label>
+                                         <input class="form-control" name="product_name">    
+                                </div>
+                                <div class="form-group">
+                                        <label>产品成本价</label>
+                                         <input class="form-control" name="cost_price">    
+                                </div>
+                                <div class="form-group">
+                                        <label>产品售价</label>
+                                         <input class="form-control" name="product_price">    
+                                </div>
+                                <div class="form-group">
+                                        <label>计量单位</label>
+                                         <input class="form-control" name="company">    
+                                </div>
+                                <div class="form-group">
+                                            <label>选择产品大类</label>
+                                            <select class="form-control" name="parent">
+                                                {volist name="type" id
+                                                ="vo"}
+                                                <option value="{$vo.type_id}">{$vo.type_name}</option>
+                                                {/volist}
+                                                
+                                            </select>
+                                </div>
+                                <div class="form-group">
+                                            <label>选择产品小类</label>
+                                            <select class="form-control" name="type_id">
+                                            </select>
+                                </div>
+                                <div class="form-group">
+                                            <label>添加产品图片</label>
+                                            <input type="file" name="file">
+                                </div>
+                                <div class="form-group">
+                                            <label>产品规格</label>
+                                            <textarea name="product_desc" class="form-control" rows="3"></textarea>
+                                </div>
+                                <div style="text-align: center"> 
+                                    <button class="btn btn-primary">添加</button>
+                                </div>
+                            </form>
+                          
+                        </div>
+                    </div>
+                </div>
+             
+            </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+    </div>
+    <!-- /. PAGE INNER  -->
+</div>
+<script src="__STATIC__/assets/js/jquery.min.js"></script>
+<script>
+    var type_id = $('[name=parent]').val();
+    $.ajax({
+        type : 'post',
+        data : {type_id : type_id},
+        dataType : 'json',
+        url : '/index.php/index/system/selectajax',
+        success : function (res) {
+            var arr = res.data;
+            var str = '';
+            for (var i = 0; i < arr.length; i++) {
+                str += '<option value="'+arr[i]['type_id']+'">'+arr[i]['type_name']+'</option>';
+            }
+            $('[name=type_id]').append(str);
+        }
+    })
+    
+    $('[name=parent]').change(function () {
+            var v = $(this).val();
+            $.ajax({
+                type : 'post',
+                data : {type_id : v},
+                dataType : 'json',
+                url : '/index.php/index/system/selectajax',
+                success : function (res) {
+                    var arr = res.data;
+                    var str = '';
+                    for (var i = 0; i < arr.length; i++) {
+                        str += '<option value="'+arr[i]['type_id']+'">'+arr[i]['type_name']+'</option>';
+                    }
+                    $('[name=type_id]').empty();
+                    $('[name=type_id]').append(str);
+                }
+            })
+            
+    })
+
+</script>
+{/block}

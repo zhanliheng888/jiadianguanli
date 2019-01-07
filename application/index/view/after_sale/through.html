@@ -1,0 +1,76 @@
+{extend name="public/base"}
+{block name="main"}
+<div id="page-wrapper" >
+    <div id="page-inner">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="page-header">
+                    售后管理<small>售后服务办结</small>
+                </h1>
+            </div>
+        </div>
+        <!-- /. ROW  -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading" style="text-align: center;">
+                        售后服务列表
+                    </div>
+                         <div class="panel-body">
+                            
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                            <th>服务反馈单号</th>
+                                            <th>售后服务单编号</th>
+                                            <th>售后人员</th>
+                                            <th>反馈日期</th>
+                                            <th>处理类型</th>
+                                            <th>费用</th>
+                                            <th>操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {volist name="list" id="vo"}
+                                        <tr>
+                                            <td>{$vo.fb_number}</td>
+                                            <td>{$vo.after_number}</td>
+                                            <td>{$vo.username}</td>
+                                            <td>{$vo.fd_time|date="Y-m-d H:i:s",###}</td>
+                                            <td>
+                                                {if condition="$vo.handle == 1"}
+                                                退货
+                                                {/if}
+                                                {if condition="$vo.handle == 2"}
+                                                换货
+                                                {/if}
+                                                {if condition="$vo.handle == 3"}
+                                                维修
+                                                {/if}
+                                                {if condition="$vo.handle == 4"}
+                                                咨询
+                                                {/if}
+                                            </td>
+                                            <td>{$vo.cost}</td>
+                                          
+                                            <td>
+                                               
+                                                <a href="{:url('index/after_sale/lookAjax',['fd_id' => $vo.fd_id])}">
+                                                <button class="btn btn-primary btn-xs">查看</button>
+                                                </a>
+                                            </td>
+                                        </tr> 
+                                        {/volist}                   
+                                    </tbody>
+                                        
+                                </table>
+                            </div>
+                    <!-- /.panel-body -->
+                </div>
+            <!-- /.col-lg-12 -->
+        </div>
+    </div>
+    <!-- /. PAGE INNER  -->
+</div>
+{/block}

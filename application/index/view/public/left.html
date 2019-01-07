@@ -1,0 +1,25 @@
+<nav class="navbar-default navbar-side" role="navigation">
+
+    <div class="sidebar-collapse">
+        <ul class="nav" id="main-menu">
+
+            {volist name="role_list" id="vo"}
+            <li>
+                <a  href="#">
+                <i class="fa fa-dashboard"></i>
+                {$vo.name}<span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level">
+                    {volist name="$vo.role" id="vv"}
+                    <li>
+                        <a href="{:url($vv.url)}">{$vv.name}</a>
+                    </li>
+                    {/volist}
+                </ul>
+            </li>
+            {/volist}
+        </ul>
+
+    </div>
+
+</nav>

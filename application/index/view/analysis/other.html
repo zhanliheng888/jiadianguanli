@@ -1,0 +1,55 @@
+{extend name="public/base"}
+{block name="main"}
+<div id="page-wrapper" >
+    <div id="page-inner">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="page-header">
+                    统计分析<small>产品统计表</small>
+                </h1>
+            </div>
+        </div>
+        <!-- /. ROW  -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading" style="text-align: center;">
+                        产品统计表
+                    </div>
+                         <div class="panel-body">
+                            
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                            <th>产品名称</th>
+                                            <th>购买途径</th>
+                                            <th>销售数量</th>
+                                            <th>日期范围</th>
+                                            <th>销售总额</th>
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {volist name="list" id="vo"}
+                                        <tr>
+                                            <td>{$vo.product_name}</td>
+                                            <td>{$vo.buy_channel}</td>
+                                            <td>{$vo.newnum}</td>
+                                            <td>{$month}</td>
+                                            <td>{$vo.allmoney}</td>
+                                        </tr>
+                                        {/volist}
+                                                    
+                                    </tbody>
+                                        
+                                </table>
+                            </div>
+                    <!-- /.panel-body -->
+                </div>
+            <!-- /.col-lg-12 -->
+        </div>
+    </div>
+    <!-- /. PAGE INNER  -->
+</div>
+{/block}

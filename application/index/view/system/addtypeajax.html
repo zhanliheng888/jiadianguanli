@@ -1,0 +1,62 @@
+{extend name="public/base"}
+{block name="main"}
+<div id="page-wrapper" >
+    <div id="page-inner">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="page-header">
+                    产品管理<small>添加产品分类</small>
+                </h1>
+            </div>
+        </div>
+        <!-- /. ROW  -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading" style="text-align: center;">
+                        添加产品分类
+                    </div>
+                    <div class="panel-body">
+                              <div class="row">
+                <div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
+                    <div class="panel panel-default">
+                        
+                        <div class="panel-body">
+                            <form role="form" method="post" action="{:url('index/system/addTypeAjax')}" enctype="multipart/form-data" >
+                                
+                                <div class="form-group">
+                                            <label>选择产品大类</label>
+                                            <select class="form-control" name="parent_id">
+                                                <option value="0">添加大类</option>
+                                                {volist name="type" id
+                                                ="vo"}
+                                                <option value="{$vo.type_id}">{$vo.type_name}</option>
+                                                {/volist}
+                                                
+                                            </select>
+                                </div>
+                                <div class="form-group">
+                                            <label>输入分类名称</label>
+                                           <input type="text" class="form-control"  name="type_name">
+                                </div>
+                              
+                                <div style="text-align: center"> 
+                                    <button class="btn btn-primary">添加</button>
+                                </div>
+                            </form>
+                          
+                        </div>
+                    </div>
+                </div>
+             
+            </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+    </div>
+    <!-- /. PAGE INNER  -->
+</div>
+{/block}

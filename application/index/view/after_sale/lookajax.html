@@ -1,0 +1,94 @@
+{extend name="public/base"}
+{block name="main"}
+<div id="page-wrapper" >
+    <div id="page-inner">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="page-header">
+                    售后管理<small>售后服务办理</small>
+                </h1>
+            </div>
+        </div>
+        <!-- /. ROW  -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading" style="text-align: center;">
+                        售后服务办理
+                    </div>
+                    <div class="panel-body">
+                              <div class="row">
+                <div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
+                    <div class="panel panel-default">
+                        
+                        <div class="panel-body">
+                            <form role="form" method="post" action="{:url('index/after_sale/endAjax')}" enctype="multipart/form-data" >
+                                
+                                <div class="form-group">
+                                        <label>售后服务单号</label>
+                                        <input type="text" class="form-control"  name="after_number" value="{$info.after_number}">
+                                              
+                                </div>
+                                <div class="form-group">
+                                        <label>销售人员</label>
+                                        <input type="text" class="form-control"  name="" value="{$info.username}">
+                                </div>
+                                <div class="form-group">
+                                        <label>处理类型</label>
+                                        <div>
+                                        <input type="radio" name="handle" value="1" 
+                                        {if condition="$info.handle == 1"}
+                                            checked=""
+                                        {/if}>退货
+                                        <input type="radio" name="handle" value="2" {if condition="$info.handle == 2"}
+                                            checked=""
+                                        {/if}>换货
+                                        <input type="radio" name="handle" value="3" {if condition="$info.handle == 3"}
+                                            checked=""
+                                        {/if}>维修
+                                        <input type="radio" name="handle" value="4" {if condition="$info.handle == 4"}
+                                            checked=""
+                                        {/if}>咨询
+                                        </div>
+                                       
+                                </div>
+                                <div class="form-group">
+                                        <label>费用</label>
+                                        <input type="text" class="form-control"  name="cost" value="{$info.cost}">
+                                        
+                                </div>
+                              
+                                <div class="form-group">
+                                        <label>处理情况说明</label>
+                                         <textarea name="desc" class="form-control"  rows="3">{$info.desc}</textarea>
+                                </div>
+                                <div class="form-group">
+                                        <label>客户是否确认</label>
+                                        <div>
+                                        <input type="radio" name="confirm" value="1" {if condition="$info.confirm == 1"}
+                                            checked=""
+                                        {/if}>已确认
+                                        <input type="radio" name="confirm" value="2"{if condition="$info.confirm == 2"}
+                                            checked=""
+                                        {/if}>未确认
+                                        </div>
+                                </div>
+                              
+                              
+                            </form>
+                          
+                        </div>
+                    </div>
+                </div>
+             
+            </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+    </div>
+    <!-- /. PAGE INNER  -->
+</div>
+{/block}

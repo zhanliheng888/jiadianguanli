@@ -1,0 +1,65 @@
+{extend name="public/base"}
+{block name="main"}
+<div id="page-wrapper" >
+    <div id="page-inner">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="page-header">
+                    系统管理<small>客户管理</small>
+                </h1>
+            </div>
+        </div>
+        <!-- /. ROW  -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading" style="text-align: center;">
+                        客户信息更新
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-8 col-lg-offset-2">
+                                <form role="form" action="{:url('index/system/editCustomerAjax')}" method="post">
+                                    <div class="form-group">
+                                            <label>客户名称</label>
+                                            <input class="form-control" name="username" value="{$info.username}">
+                                           
+                                    </div>
+                                    <div class="form-group">
+                                            <label>联系电话</label>
+                                            <input class="form-control" name="contact_tel" value="{$info.contact_tel}">
+                                    </div>
+                                    <div class="form-group">
+                                            <label>客户地址</label>
+                                            <input class="form-control" name="addr" value="{$info.addr}">    
+                                            <input type="hidden" name="customer_id" value="{$info.customer_id}">
+                                    </div>
+                                    <div class="form-group">
+                                            <label>客户等级</label>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="grade"  value="1" {if condition="$info.grade == 1"}checked=""{/if}>普通客户
+                                                </label>
+                                                <label>
+                                                    <input type="radio" name="grade"  value="2" {if condition="$info.grade == 2"}checked=""{/if}>VIP客户
+                                                </label>
+                                            </div>   
+                                    </div>
+                                   
+                                    <div style="text-align: center">
+                                        <button class="btn btn-primary">
+                                            保存并更新
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                   
+                    </div>
+            <!-- /.col-lg-12 -->
+        </div>
+    </div>
+    <!-- /. PAGE INNER  -->
+</div>
+
+{/block}

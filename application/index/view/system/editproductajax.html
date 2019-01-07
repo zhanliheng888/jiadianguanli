@@ -1,0 +1,75 @@
+{extend name="public/base"}
+{block name="main"}
+<div id="page-wrapper" >
+    <div id="page-inner">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="page-header">
+                    产品管理<small>添加产品</small>
+                </h1>
+            </div>
+        </div>
+        <!-- /. ROW  -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading" style="text-align: center;">
+                        编辑产品信息
+                    </div>
+                    <div class="panel-body">
+                              <div class="row">
+                <div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
+                    <div class="panel panel-default">
+                        
+                        <div class="panel-body">
+                            <form role="form" method="post" action="{:url('index/system/editproductajax')}" enctype="multipart/form-data" >
+                                <div class="form-group">
+                                        <label>产品名称</label>
+                                         <input class="form-control" name="product_name" value="{$info.product_name}">    
+                                </div>
+                                <div class="form-group">
+                                        <label>产品成本价</label>
+                                         <input class="form-control" name="cost_price" value="{$info.cost_price}">    
+                                </div>
+                                <div class="form-group">
+                                        <label>产品售价</label>
+                                         <input class="form-control" name="product_price" value="{$info.product_price}">    
+                                </div>
+                                <div class="form-group">
+                                        <label>产品分类</label>
+                                         <input class="form-control" disabled="" name="product_price" value="{$info.type_name}"> 
+                                        <p class="help-block">修改分类请去产品配置</p>   
+                                </div>
+                                <div class="form-group">
+                                            <label>添加产品图片</label>
+                                            <input type="file" name="file">
+                                            <input type="hidden" name="product_id"
+                                            value="{$info.product_id}">
+                                </div>
+                                <div class="form-group">
+                                            <label>产品规格</label>
+                                            <textarea name="product_desc" class="form-control" rows="3">{$info.product_desc}</textarea>
+                                </div>
+                                <div style="text-align: center"> 
+                                    <button class="btn btn-primary">保存并更新</button>
+                                </div>
+                            </form>
+                          
+                        </div>
+                    </div>
+                </div>
+             
+            </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+    </div>
+    <!-- /. PAGE INNER  -->
+</div>
+
+
+</script>
+{/block}

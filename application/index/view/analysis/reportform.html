@@ -1,0 +1,139 @@
+{extend name="public/base"}
+{block name="main"}
+<div id="page-wrapper" >
+    <div id="page-inner">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="page-header">
+                    统计分析<small>报表统计</small>
+                </h1>
+            </div>
+        </div>
+        <!-- /. ROW  -->
+        <div class="row">
+                    <div class="col-md-9 col-sm-12 col-xs-12">
+                        <div class="panel panel-default">
+                            <div id="hot" style="width: 600px;height:400px;"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-9 col-sm-12 col-xs-12">
+                        <div class="panel panel-default">
+                            <div id="unhot" style="width: 600px;height:400px;"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-9 col-sm-12 col-xs-12">
+                        <div class="panel panel-default">
+                            <div id="quality" style="width: 600px;height:400px;"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-9 col-sm-12 col-xs-12">
+                        <div class="panel panel-default">
+                            <div id="unquality" style="width: 600px;height:400px;"></div>
+                        </div>
+                    </div>
+                  
+        </div>
+    
+<script src="__STATIC__/assets/js/jquery.min.js"></script>
+<script src="__STATIC__/assets/js/echarts.min.js"></script>
+<script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('hot'));
+
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: '本月最受欢迎产品'
+            },
+            tooltip: {},
+            legend: {
+                data:['销量']
+            },
+            xAxis: {
+                data: [{$hot1}]
+            },
+            yAxis: {},
+            series: [{
+                name: '销量',
+                type: 'bar',
+                data: [{$hot2}]
+            }]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+
+        var myChart = echarts.init(document.getElementById('unhot'));
+        var option1 = {
+            title: {
+                text: '本月最不受欢迎产品'
+            },
+            tooltip: {},
+            legend: {
+                data:['销量']
+            },
+            xAxis: {
+                data: [{$unhot1}]
+            },
+            yAxis: {},
+            series: [{
+                name: '销量',
+                type: 'bar',
+                data: [{$unhot2}]
+            }]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option1);
+        var myChart = echarts.init(document.getElementById('quality'));
+        var option2 = {
+            title: {
+                text: '本月质量问题最多'
+            },
+            tooltip: {},
+            legend: {
+                data:['质量问题']
+            },
+            xAxis: {
+                data: [{$quality1}]
+            },
+            yAxis: {},
+            series: [{
+                name: '质量问题',
+                type: 'bar',
+                data: [{$quality2}]
+            }]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option2);
+
+        var myChart = echarts.init(document.getElementById('unquality'));
+        var option3 = {
+            title: {
+                text: '本月质量问题最少'
+            },
+            tooltip: {},
+            legend: {
+                data:['质量问题']
+            },
+            xAxis: {
+                data: [{$unquality1}]
+            },
+            yAxis: {},
+            series: [{
+                name: '质量问题',
+                type: 'bar',
+                data: [{$unquality2}]
+            }]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option3);
+    </script>
+<script>
+
+
+</script>
+
+{/block}

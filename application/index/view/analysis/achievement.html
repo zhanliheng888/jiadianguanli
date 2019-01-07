@@ -1,0 +1,95 @@
+{extend name="public/base"}
+{block name="main"}
+<div id="page-wrapper" >
+    <div id="page-inner">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="page-header">
+                    统计分析<small>核算业绩</small>
+                </h1>
+            </div>
+        </div>
+        <!-- /. ROW  -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading" style="text-align: center;">
+                        业绩列表
+                    </div>
+                         <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                            <th>员工编号</th>
+                                            <th>员工姓名</th>
+                                            <th>产品类别</th>
+                                            <th>销售总额</th>
+                                            <th>日期</th>                               
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {volist name="list" id="vo"}
+                                        <tr {if condition="$key<3"}style="color:red;"{/if}
+                                            {if condition="$key>=3 && $key<10"}style="color:green;"{/if}
+                                            {if condition="$key>=10 && $key<20"}style="color:orange;"{/if}
+                                            {if condition="$key>=20"}style="color:#ff000052;"{/if}
+                                        >
+                                            <td>{$vo.user_number}</td>
+                                            <td>{$vo.username}</td>
+                                            <td>{$vo.type_name}</td>
+                                            <td>{$vo.allmoney}</td>
+                                            <td>{$vo.time|date="Y-m-d",###}</td>
+                                        </tr>
+                                        {/volist}
+                                                       
+                                    </tbody>
+                                        
+                                </table>
+                            </div>
+                    <!-- /.panel-body -->
+                </div>
+            <!-- /.col-lg-12 -->
+        </div>
+    </div>
+    <div class="row">
+         <h4>售后服务统计</h4>
+            <div class="col-xs-6 col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-body easypiechart-panel">
+                        <h4>退货</h4>
+                        <div class="easypiechart" id="easypiechart-blue" data-percent="{$tuihuo}" ><span class="percent">{$tuihuo}%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-body easypiechart-panel">
+                        <h4>换货</h4>
+                        <div class="easypiechart" id="easypiechart-orange" data-percent="{$huanhuo}" ><span class="percent">{$huanhuo}%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-body easypiechart-panel">
+                        <h4>维修</h4>
+                        <div class="easypiechart" id="easypiechart-teal" data-percent="{$weixiu}" ><span class="percent">{$weixiu}%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-body easypiechart-panel">
+                        <h4>咨询</h4>
+                        <div class="easypiechart" id="easypiechart-red" data-percent="{$zixun}" ><span class="percent">{$zixun}%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--/.row-->
+</div>
+{/block}

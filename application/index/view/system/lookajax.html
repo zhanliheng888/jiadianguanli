@@ -1,0 +1,68 @@
+{extend name="public/base"}
+{block name="main"}
+<div id="page-wrapper" >
+    <div id="page-inner">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="page-header">
+                    系统管理<small>员工、部门及角色管理</small>
+                </h1>
+            </div>
+        </div>
+        <!-- /. ROW  -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading" style="text-align: center;">
+                        员工详细信息
+                    </div>
+                    <div class="panel-body">
+                              <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="panel panel-default">
+                        
+                        <div class="panel-body">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#home" data-toggle="tab">员工信息</a>
+                                </li>
+                                <li class=""><a href="#profile" data-toggle="tab">所属部门</a>
+                                </li>
+                                <li class=""><a href="#messages" data-toggle="tab">所属角色</a>
+                                </li>
+                                
+                            </ul>
+
+                            <div class="tab-content">
+                                <div class="tab-pane fade active in" id="home">
+                                    <h4>员工姓名 :  {$user_info.username}</h4>
+                                    <h4>员工编号 :  {$user_info.user_number}</h4>
+                                    <h4>上次登录时间 :  {$user_info.login_time|date="Y-m-d",###}</h4>
+                                    <h4>上次登录IP :  {$user_info.ip}</h4>
+                                    <p></p>
+                                </div>
+                                <div class="tab-pane fade" id="profile">
+                                    <h4> 部门名称 : {$user_info.department_name}</h4>
+                                    <h4> 部门产品大类 : {$user_info.type_name}</h4>
+                                    <p>部门说明 : {$user_info.department_desc|nl2br}.</p>
+                                </div>
+                                <div class="tab-pane fade" id="messages">
+                                    <h4>角色名称 : {$user_info.role_name}</h4>
+                                    <p>角色说明 : {$user_info.role_desc}</p>
+                                </div>
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             
+            </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+    </div>
+    <!-- /. PAGE INNER  -->
+</div>
+{/block}

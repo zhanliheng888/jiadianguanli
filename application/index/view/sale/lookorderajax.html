@@ -1,0 +1,86 @@
+{extend name="public/base"}
+{block name="main"}
+<div id="page-wrapper" >
+    <div id="page-inner">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="page-header">
+                    家电销售<small>订单详细信息</small>
+                </h1>
+            </div>
+        </div>
+        <!-- /. ROW  -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading" style="text-align: center;">
+                        订单详细信息
+                    </div>
+                    <div class="panel-body">
+                              <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="panel panel-default">
+                        
+                        <div class="panel-body">
+                            <ul class="nav nav-tabs">
+                                <li class="active">
+                                    <a href="#order" data-toggle="tab">订单信息</a>
+                                </li>
+                                <li class="">
+                                    <a href="#home" data-toggle="tab">销售人员</a>
+                                </li>
+                                <li class="">
+                                    <a href="#profile" data-toggle="tab">商品信息</a>
+                                </li>
+                                <li class="">
+                                    <a href="#messages" data-toggle="tab">购买客户</a>
+                                </li>
+                                
+                            </ul>
+
+                            <div class="tab-content">
+                                <div class="tab-pane fade active in" id="order">
+                                    <h4>订单编号 : {$info.order_number}  </h4>
+                                    <h4>购买时间 :  {$info.buy_time|date="Y-m-d",###}</h4>
+                                    <h4>购买数量 :  {$info.num}</h4>
+                                    <h4>购买途径 :  {$info.buy_channel}</h4>
+                                    <h4>总金额 :  {$info.allmoney}</h4>
+                                    <p></p>
+                                </div>
+                                <div class="tab-pane fade " id="home">
+                                    <h4>员工姓名 : {$info.name} </h4>
+                                    <h4>员工编号 : {$info.user_number}</h4>
+                                    <h4>所属部门 : {$info.department_name}</h4>
+                                    <p></p>
+                                </div>
+                                <div class="tab-pane fade" id="profile">
+                                    <h4> 产品名称 : {$info.product_name} </h4>
+                                    <h4> 产品编号 : {$info.product_number}</h4>
+                                    <h4> 所属分类 : {$info.type_name}</h4>
+                                    <h4> 产品成本价 : {$info.cost_price}</h4>
+                                    <h4> 产品售价 : {$info.product_price}</h4>
+                                    <p>产品规格 : {$info.product_desc}</p>
+                                </div>
+                                <div class="tab-pane fade" id="messages">
+                                    <h4>客户名称 : {$info.customer_name}</h4>
+                                    <h4>客户编号 : {$info.customer_number}</h4>
+                                    <h4>联系电话 : {$info.contact_tel}</h4>
+                                    <h4>客户地址 : {$info.addr}</h4>
+                                </div>
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             
+            </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+    </div>
+    <!-- /. PAGE INNER  -->
+</div>
+{/block}
